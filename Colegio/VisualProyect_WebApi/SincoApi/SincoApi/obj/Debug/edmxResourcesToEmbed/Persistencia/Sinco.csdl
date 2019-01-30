@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SINCOABRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="ID_ALUMNO" />
+    </Key>
+    <Property Name="ID_ALUMNO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="INCRIPCION" Relationship="Self.FK__INCRIPCIO__ID_AL__1CF15040" FromRole="ALUMNO" ToRole="INCRIPCION" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="ID_CURSO" />
+    </Key>
+    <Property Name="ID_CURSO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_MATERIA" Type="Int32" Nullable="false" />
+    <Property Name="ID_PROFESOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MATERIA" Relationship="Self.FK__CURSO__ID_MATERI__164452B1" FromRole="CURSO" ToRole="MATERIA" />
+    <NavigationProperty Name="PROFESOR" Relationship="Self.FK__CURSO__ID_PROFES__173876EA" FromRole="CURSO" ToRole="PROFESOR" />
+    <NavigationProperty Name="INCRIPCION" Relationship="Self.FK__INCRIPCIO__ID_CU__1BFD2C07" FromRole="CURSO" ToRole="INCRIPCION" />
+  </EntityType>
+  <EntityType Name="INCRIPCION">
+    <Key>
+      <PropertyRef Name="ID_INCRIPCION" />
+    </Key>
+    <Property Name="ID_INCRIPCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_CURSO" Type="Int32" Nullable="false" />
+    <Property Name="ID_ALUMNO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOTA1" Type="Int16" />
+    <Property Name="NOTA2" Type="Int16" />
+    <NavigationProperty Name="ALUMNO" Relationship="Self.FK__INCRIPCIO__ID_AL__1CF15040" FromRole="INCRIPCION" ToRole="ALUMNO" />
+    <NavigationProperty Name="CURSO" Relationship="Self.FK__INCRIPCIO__ID_CU__1BFD2C07" FromRole="INCRIPCION" ToRole="CURSO" />
+  </EntityType>
+  <EntityType Name="MATERIA">
+    <Key>
+      <PropertyRef Name="ID_MATERIA" />
+    </Key>
+    <Property Name="ID_MATERIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CURSO" Relationship="Self.FK__CURSO__ID_MATERI__164452B1" FromRole="MATERIA" ToRole="CURSO" />
+  </EntityType>
+  <EntityType Name="PROFESOR">
+    <Key>
+      <PropertyRef Name="ID_PROFESOR" />
+    </Key>
+    <Property Name="ID_PROFESOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CURSO" Relationship="Self.FK__CURSO__ID_PROFES__173876EA" FromRole="PROFESOR" ToRole="CURSO" />
+  </EntityType>
+  <Association Name="FK__INCRIPCIO__ID_AL__1CF15040">
+    <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="1" />
+    <End Role="INCRIPCION" Type="Self.INCRIPCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALUMNO">
+        <PropertyRef Name="ID_ALUMNO" />
+      </Principal>
+      <Dependent Role="INCRIPCION">
+        <PropertyRef Name="ID_ALUMNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CURSO__ID_MATERI__164452B1">
+    <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="1" />
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIA">
+        <PropertyRef Name="ID_MATERIA" />
+      </Principal>
+      <Dependent Role="CURSO">
+        <PropertyRef Name="ID_MATERIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CURSO__ID_PROFES__173876EA">
+    <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="1" />
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROFESOR">
+        <PropertyRef Name="ID_PROFESOR" />
+      </Principal>
+      <Dependent Role="CURSO">
+        <PropertyRef Name="ID_PROFESOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INCRIPCIO__ID_CU__1BFD2C07">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+    <End Role="INCRIPCION" Type="Self.INCRIPCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="ID_CURSO" />
+      </Principal>
+      <Dependent Role="INCRIPCION">
+        <PropertyRef Name="ID_CURSO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SINCOABREntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" />
+    <EntitySet Name="INCRIPCION" EntityType="Self.INCRIPCION" />
+    <EntitySet Name="MATERIA" EntityType="Self.MATERIA" />
+    <EntitySet Name="PROFESOR" EntityType="Self.PROFESOR" />
+    <AssociationSet Name="FK__INCRIPCIO__ID_AL__1CF15040" Association="Self.FK__INCRIPCIO__ID_AL__1CF15040">
+      <End Role="ALUMNO" EntitySet="ALUMNO" />
+      <End Role="INCRIPCION" EntitySet="INCRIPCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CURSO__ID_MATERI__164452B1" Association="Self.FK__CURSO__ID_MATERI__164452B1">
+      <End Role="MATERIA" EntitySet="MATERIA" />
+      <End Role="CURSO" EntitySet="CURSO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CURSO__ID_PROFES__173876EA" Association="Self.FK__CURSO__ID_PROFES__173876EA">
+      <End Role="PROFESOR" EntitySet="PROFESOR" />
+      <End Role="CURSO" EntitySet="CURSO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INCRIPCIO__ID_CU__1BFD2C07" Association="Self.FK__INCRIPCIO__ID_CU__1BFD2C07">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="INCRIPCION" EntitySet="INCRIPCION" />
+    </AssociationSet>
+    <EntitySet Name="INCRIPCIONES" EntityType="SINCOABRModel.INCRIPCIONES" />
+    <EntitySet Name="ALUMNOS" EntityType="SINCOABRModel.ALUMNOS" />
+    <EntitySet Name="CURSOS" EntityType="SINCOABRModel.CURSOS" />
+    <EntitySet Name="CURSOS_LIST" EntityType="SINCOABRModel.CURSOS_LIST" />
+    <EntitySet Name="MATERIAS" EntityType="SINCOABRModel.MATERIAS" />
+    <EntitySet Name="PROFESORES" EntityType="SINCOABRModel.PROFESORES" />
+  </EntityContainer>
+  <EntityType Name="INCRIPCIONES">
+    <Key>
+      <PropertyRef Name="ID_INCRIPCION" />
+      <PropertyRef Name="ALUMNO" />
+      <PropertyRef Name="MATERIA" />
+      <PropertyRef Name="PROFESOR" />
+    </Key>
+    <Property Name="ID_INCRIPCION" Type="Int32" Nullable="false" />
+    <Property Name="ALUMNO" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+    <Property Name="MATERIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PROFESOR" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+    <Property Name="NOTA1" Type="Int16" />
+    <Property Name="NOTA2" Type="Int16" />
+  </EntityType>
+  <EntityType Name="ALUMNOS">
+    <Key>
+      <PropertyRef Name="ID_ALUMNO" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="APELLIDO" />
+      <PropertyRef Name="TELEFONO" />
+    </Key>
+    <Property Name="ID_ALUMNO" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CURSOS">
+    <Key>
+      <PropertyRef Name="ID_CURSO" />
+      <PropertyRef Name="MATERIA" />
+      <PropertyRef Name="PROFESOR" />
+    </Key>
+    <Property Name="ID_CURSO" Type="Int32" Nullable="false" />
+    <Property Name="MATERIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PROFESOR" Type="String" Nullable="false" MaxLength="61" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CURSOS_LIST">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="VALUE" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="VALUE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MATERIAS">
+    <Key>
+      <PropertyRef Name="ID_MATERIA" />
+      <PropertyRef Name="NOMBRE" />
+    </Key>
+    <Property Name="ID_MATERIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PROFESORES">
+    <Key>
+      <PropertyRef Name="ID_PROFESOR" />
+      <PropertyRef Name="NOMBRE" />
+      <PropertyRef Name="APELLIDO" />
+      <PropertyRef Name="TELEFONO" />
+    </Key>
+    <Property Name="ID_PROFESOR" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

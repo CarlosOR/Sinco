@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SINCOABRModelStoreContainer" CdmEntityContainer="SINCOABREntities1">
+    <EntitySetMapping Name="ALUMNO">
+      <EntityTypeMapping TypeName="SINCOABRModel.ALUMNO">
+        <MappingFragment StoreEntitySet="ALUMNO">
+          <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSO">
+      <EntityTypeMapping TypeName="SINCOABRModel.CURSO">
+        <MappingFragment StoreEntitySet="CURSO">
+          <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="ID_PROFESOR" ColumnName="ID_PROFESOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INCRIPCION">
+      <EntityTypeMapping TypeName="SINCOABRModel.INCRIPCION">
+        <MappingFragment StoreEntitySet="INCRIPCION">
+          <ScalarProperty Name="ID_INCRIPCION" ColumnName="ID_INCRIPCION" />
+          <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+          <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+          <ScalarProperty Name="NOTA1" ColumnName="NOTA1" />
+          <ScalarProperty Name="NOTA2" ColumnName="NOTA2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIA">
+      <EntityTypeMapping TypeName="SINCOABRModel.MATERIA">
+        <MappingFragment StoreEntitySet="MATERIA">
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROFESOR">
+      <EntityTypeMapping TypeName="SINCOABRModel.PROFESOR">
+        <MappingFragment StoreEntitySet="PROFESOR">
+          <ScalarProperty Name="ID_PROFESOR" ColumnName="ID_PROFESOR" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INCRIPCIONES">
+      <EntityTypeMapping TypeName="SINCOABRModel.INCRIPCIONES">
+        <MappingFragment StoreEntitySet="INCRIPCIONES">
+          <ScalarProperty Name="NOTA2" ColumnName="NOTA2" />
+          <ScalarProperty Name="NOTA1" ColumnName="NOTA1" />
+          <ScalarProperty Name="PROFESOR" ColumnName="PROFESOR" />
+          <ScalarProperty Name="MATERIA" ColumnName="MATERIA" />
+          <ScalarProperty Name="ALUMNO" ColumnName="ALUMNO" />
+          <ScalarProperty Name="ID_INCRIPCION" ColumnName="ID_INCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ALUMNOS">
+      <EntityTypeMapping TypeName="SINCOABRModel.ALUMNOS">
+        <MappingFragment StoreEntitySet="ALUMNOS">
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ID_ALUMNO" ColumnName="ID_ALUMNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSOS">
+      <EntityTypeMapping TypeName="SINCOABRModel.CURSOS">
+        <MappingFragment StoreEntitySet="CURSOS">
+          <ScalarProperty Name="PROFESOR" ColumnName="PROFESOR" />
+          <ScalarProperty Name="MATERIA" ColumnName="MATERIA" />
+          <ScalarProperty Name="ID_CURSO" ColumnName="ID_CURSO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSOS_LIST">
+      <EntityTypeMapping TypeName="SINCOABRModel.CURSOS_LIST">
+        <MappingFragment StoreEntitySet="CURSOS_LIST">
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIAS">
+      <EntityTypeMapping TypeName="SINCOABRModel.MATERIAS">
+        <MappingFragment StoreEntitySet="MATERIAS">
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROFESORES">
+      <EntityTypeMapping TypeName="SINCOABRModel.PROFESORES">
+        <MappingFragment StoreEntitySet="PROFESORES">
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="ID_PROFESOR" ColumnName="ID_PROFESOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
